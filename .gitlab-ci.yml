@@ -1,1 +1,9 @@
-# @todo
+image: golang:1.10.3
+
+stages:
+  - init
+
+install:
+  stage: init
+  script:
+    - echo OK
