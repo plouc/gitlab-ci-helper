@@ -46,9 +46,9 @@ help: ##prints help
 
 install: ##@setup install dependencies
 	@echo "${YELLOW}Installing dependencies${RESET}"
-	go list -f '{{range .Imports}}{{.}} {{end}}' ./... | xargs go get -v ${install_args}
-	go list -f '{{range .TestImports}}{{.}} {{end}}' ./... | xargs go get -v ${install_args}
-	go get -v ${install_args} github.com/wadey/gocovmerge
+	go list -f '{{range .Imports}}{{.}} {{end}}' ./... | xargs go get ${install_args}
+	go list -f '{{range .TestImports}}{{.}} {{end}}' ./... | xargs go get ${install_args}
+	go get ${install_args} github.com/wadey/gocovmerge
 	@echo "${GREEN}✔ successfully installed dependencies${RESET}\n"
 
 update: ##@setup update dependencies
