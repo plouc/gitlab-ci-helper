@@ -25,3 +25,9 @@ _testmain.go
 
 package
 build
+
+# IDE
+.idea
+
+# config
+.ci.yml

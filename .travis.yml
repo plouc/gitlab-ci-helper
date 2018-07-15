@@ -4,7 +4,7 @@ go: [1.9]
 
 sudo: required
 
-services :
+services:
   - docker
 
 before_install:
@@ -18,7 +18,9 @@ script:
   - make build
 
 deploy:
-    provider: releases
+    provider:     releases
+    skip_cleanup: true
+    overwrite:    true
     api_key:
         secure: "RoTpQKwDD4TK2toDDrDIwfd/PrMK3LtjYH8xsdgu2p8bAbP4bQvLvCmDQZv7/DNZ9UKQ7+CpPGxGkAhIboCtBqnC0KALtRIyo0U3AW0lGqFAbbHXSI9MiX5CH58QXzA88dH/l3QVaG8o7W4pWv2RM9es6HTzhvcSF21/HFc8VUuZhQvGPzqxpCa3vgORI/ZaFf7rx8kQXtlGkYDi0CoR5Vv8z2nhfXivw79y7dRYPQk2GKzk12GCgNwLdA6Neegz2pT6GYYdgjm6xWk3l3/bk+lSLpGx75JHt7t6mVUi7In1w6M3Gyt39GyakauHQCg2ZKheadPXGOWryAIXAUQB+b/gCShBBieXknPEGpCtmQz80OXSXFt3Nm6zBQa/TazR3qnVvF+vN3Z3faQauulgkDp/Siqd4vNz6jMgnBHmMehulA8b3IlwJjZS6opDGxL1uS1k7vcSqle5n84rQyYA3+OlmWITVExH917oHib0ucGSQnoTGQ7Ozz+AvKfO2HMX5cBj1fHWVyKaZkVct/rdVqrtiFIoLA2MoYEvtvcaxEBul9eIjnpJOAdt7hoRbYRM2m8THYZHas3/18XPgiKbLnxT++gAYrQQhKMIo5j7HUrumCMOtjvOgINXnUIyRpQmmzNOxUQwMFlPUlewPvX/oL9vXcUMrS1JG+g+4UCNOTk="
     file:
@@ -28,7 +30,6 @@ deploy:
         - build/linux-arm-gitlab-ci-helper
         - build/linux-arm64-gitlab-ci-helper
         - build/alpine-amd64-gitlab-ci-helper
-    skip_cleanup: true
-    overwrite: true
+        - build/checksums.txt
     on:
         tags: true
