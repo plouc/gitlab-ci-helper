@@ -40,14 +40,6 @@ use:
   dependencies:
     - build
   script:
-    - ./build/linux-amd64-gitlab-ci-helper --help
-    - ./build/linux-amd64-gitlab-ci-helper version
-    - ./build/linux-amd64-gitlab-ci-helper dump-rev
-    - cat REVISION && echo ""
-    - ./build/linux-amd64-gitlab-ci-helper dump-meta --verbose
-    - cat ci.json && echo ""
-    # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
-    - ./build/linux-amd64-gitlab-ci-helper envs add tmp/$CI_COMMIT_SHA http://fake.io
-    - ./build/linux-amd64-gitlab-ci-helper envs list
+    - make gitlab_usage --no-print-directory
 
 

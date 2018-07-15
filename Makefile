@@ -146,3 +146,17 @@ build_checksums: ##@build generate checksums for CLI binaries
             >> checksums.txt
     endif
 	@echo "${GREEN}✔ successfully generated CLI build checksums to ${WHITE}build/checksums.txt${RESET}\n"
+
+gitlab_usage:
+	mv ./build/linux-amd64-gitlab-ci-helper ./gitlab-ci-helper
+	./gitlab-ci-helper help
+	./gitlab-ci-helper version
+	./gitlab-ci-helper dump-rev
+	cat REVISION && echo ""
+	./gitlab-ci-helper dump-meta -v
+	cat ci.json && echo ""
+
+    # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
+	./gitlab-ci-helper envs add -v "tmp/${CI_COMMIT_SHA}" http://fake.io
+	./gitlab-ci-helper envs list
+	ID=$$(./gitlab-ci-helper envs list | grep "${CI_COMMIT_SHA}" | cut -d ' ' -f3) echo $${ID}
