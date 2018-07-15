@@ -26,6 +26,7 @@ _testmain.go
 package
 build
 cli/gitlab-ci-helper
+REVISION
 
 # IDE
 .idea

@@ -42,3 +42,5 @@ use:
   script:
     - ./build/linux-amd64-gitlab-ci-helper --help
     - ./build/linux-amd64-gitlab-ci-helper version
+    - ./build/linux-amd64-gitlab-ci-helper dump-rev
+    - cat REVISION

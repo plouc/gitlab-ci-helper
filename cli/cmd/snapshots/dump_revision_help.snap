@@ -7,7 +7,10 @@ Aliases:
   dump-revision, dump-rev
 
 Flags:
-  -h, --help   help for dump-revision
+  -f, --file string   The revision file
+                      can also be defined with env var: REVISION_FILE (default "REVISION")
+  -h, --help          help for dump-revision
+  -r, --ref string    The sha1, default to env var: CI_COMMIT_SHA
 
 Global Flags:
       --api-path string   gitlab api path
