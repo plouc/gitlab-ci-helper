@@ -62,11 +62,11 @@ update: ##@setup update dependencies
 
 test: ##@test run tests and cs tools
 	@echo "${YELLOW}Running tests${RESET}"
-	go test -v ./...
-	go vet ./...
-	gofmt -l -s -e .
-	exit `gofmt -l -s -e . | wc -l`
-	@echo "${GREEN}✔ test successfully passed${RESET}\n"
+	go test -v ./cli/...
+	go vet ./cli/...
+	gofmt -l -s -e ./cli
+	@exit `gofmt -l -s -e ./cli | wc -l`
+	@echo "${GREEN}✔ tests successfully passed${RESET}\n"
 
 coverage_backend: ##@test run coverage tests
 	mkdir -p build/coverage
@@ -91,7 +91,7 @@ format: ##@misc format the code and generate commands.md file
 	@echo "${YELLOW}Formatting code${RESET}"
 	gofmt -l -w -s .
 	go fix ./...
-	go run cli/main.go dump:readme > commands.md
+	#go run cli/main.go dump:readme > commands.md
 	@echo "${GREEN}✔ code was formatted as expected${RESET}\n"
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

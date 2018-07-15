@@ -6,12 +6,12 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"github.com/plouc/go-gitlab-client/gitlab"
 	aws "github.com/rande/gitlab-ci-helper/integrations/aws/cmd"
 	hipchat "github.com/rande/gitlab-ci-helper/integrations/hipchat/cmd"
 	slack "github.com/rande/gitlab-ci-helper/integrations/slack/cmd"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var configFile string
@@ -26,15 +26,15 @@ func init() {
 	viper.BindPFlag("no-color", RootCmd.PersistentFlags().Lookup("no-color"))
 
 	// GitLab specific options
-	RootCmd.PersistentFlags().String( "host", "", "gitlab host\ndefault to env var: GITLAB_HOST\nor 'host' key in config file if exists")
+	RootCmd.PersistentFlags().String("host", "", "gitlab host\ndefault to env var: GITLAB_HOST\nor 'host' key in config file if exists")
 	viper.BindPFlag("host", RootCmd.PersistentFlags().Lookup("host"))
 	viper.BindEnv("host", "GITLAB_HOST")
 
-	RootCmd.PersistentFlags().String( "token", "", "gitlab token\ndefault to env var: GITLAB_TOKEN\nor 'token' key in config file if exists")
+	RootCmd.PersistentFlags().String("token", "", "gitlab token\ndefault to env var: GITLAB_TOKEN\nor 'token' key in config file if exists")
 	viper.BindPFlag("token", RootCmd.PersistentFlags().Lookup("token"))
 	viper.BindEnv("token", "GITLAB_TOKEN")
 
-	RootCmd.PersistentFlags().String( "api-path", "", "gitlab api path\ndefault to env var: GITLAB_API_PATH\nor'api_path' key in config file if exists,\notherwise: '/api/v4'")
+	RootCmd.PersistentFlags().String("api-path", "", "gitlab api path\ndefault to env var: GITLAB_API_PATH\nor'api_path' key in config file if exists,\notherwise: '/api/v4'")
 	viper.BindPFlag("api_path", RootCmd.PersistentFlags().Lookup("api-path"))
 	viper.BindEnv("api_path", "GITLAB_API_PATH")
 	viper.SetDefault("api_path", "/api/v4")
@@ -79,7 +79,7 @@ func initConfig() {
 }
 
 var RootCmd = &cobra.Command{
-	Use:   "gitlab-ci-helper",
+	Use: "gitlab-ci-helper",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if viper.GetBool("no-color") {
 			color.NoColor = true

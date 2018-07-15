@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"fmt"
+	"github.com/spf13/cobra"
 )
 
 func init() {
@@ -10,8 +10,8 @@ func init() {
 }
 
 var hipChatStatusCmd = &cobra.Command{
-	Use:     "status",
-	Short:   "Sends job status to hipchat",
+	Use:   "status",
+	Short: "Sends job status to hipchat",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("hipchat-status")
 	},

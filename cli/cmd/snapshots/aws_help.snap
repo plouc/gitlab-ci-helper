@@ -1,0 +1,36 @@
+aws commands
+
+Usage:
+  gitlab-ci-helper aws [command]
+
+Available Commands:
+  s3-archive  Send archive to a S3 bucket
+  s3-extract  Extract archive from a S3 bucket
+
+Flags:
+      --aws-endpoint string   aws endpoint
+                              default to environment variable: AWS_ENDPOINT
+                              or 'x.aws.endpoint' path in config file if exists
+      --aws-profile string    aws profile
+                              default to environment variable: AWS_PROFILE
+                              or 'x.aws.profile' path in config file if exists
+      --aws-region string     aws region
+                              default to environment variable: AWS_REGION
+                              or 'x.aws.region' path in config file if exists
+  -h, --help                  help for aws
+
+Global Flags:
+      --api-path string   gitlab api path
+                          default to env var: GITLAB_API_PATH
+                          or'api_path' key in config file if exists,
+                          otherwise: '/api/v4'
+  -c, --config string     config file (default is .ci.yaml)
+      --host string       gitlab host
+                          default to env var: GITLAB_HOST
+                          or 'host' key in config file if exists
+      --no-color          disable color output
+      --token string      gitlab token
+                          default to env var: GITLAB_TOKEN
+                          or 'token' key in config file if exists
+
+Use "gitlab-ci-helper aws [command] --help" for more information about a command.

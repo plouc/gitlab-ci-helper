@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"fmt"
+	"github.com/spf13/cobra"
 )
 
 func init() {
@@ -10,8 +10,8 @@ func init() {
 }
 
 var dumpRevisionCmd = &cobra.Command{
-	Use:     "dump-rev",
-	Aliases: []string{"dr"},
+	Use:     "dump-revision",
+	Aliases: []string{"dump-rev"},
 	Short:   "Dump a REVISION file with the current sha1",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("dump-revision")

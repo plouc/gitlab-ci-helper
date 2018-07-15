@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"fmt"
+	"github.com/spf13/cobra"
 )
 
 const integrationName = "hipchat"
@@ -15,6 +15,6 @@ func Register() (string, *cobra.Command, []string) {
 }
 
 var hipChatCmd = &cobra.Command{
-	Use:     integrationName,
-	Short:   fmt.Sprintf("%s commands", integrationName),
+	Use:   integrationName,
+	Short: fmt.Sprintf("%s commands", integrationName),
 }

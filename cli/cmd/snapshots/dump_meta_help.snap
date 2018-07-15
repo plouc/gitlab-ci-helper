@@ -1,0 +1,21 @@
+Dump meta information about ci into a ci.json file
+
+Usage:
+  gitlab-ci-helper dump-meta [flags]
+
+Flags:
+  -h, --help   help for dump-meta
+
+Global Flags:
+      --api-path string   gitlab api path
+                          default to env var: GITLAB_API_PATH
+                          or'api_path' key in config file if exists,
+                          otherwise: '/api/v4'
+  -c, --config string     config file (default is .ci.yaml)
+      --host string       gitlab host
+                          default to env var: GITLAB_HOST
+                          or 'host' key in config file if exists
+      --no-color          disable color output
+      --token string      gitlab token
+                          default to env var: GITLAB_TOKEN
+                          or 'token' key in config file if exists
