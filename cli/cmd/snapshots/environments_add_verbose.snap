@@ -1,0 +1,8 @@
+creating environment my env
+Successfully created env my env (id: 1)
+{
+  "id": 1,
+  "name": "my env",
+  "external_url": "http://fake.io",
+  "slug": "my-env"
+}

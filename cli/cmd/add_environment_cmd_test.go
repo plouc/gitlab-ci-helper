@@ -5,7 +5,13 @@ import (
 )
 
 func TestAddEnvironmentCmd(t *testing.T) {
-	ts := createMockServer(t, []*httpMock{})
+	ts := createMockServer(t, []*httpMock{
+		{
+			"POST",
+			"/api/v4/projects/1/environments",
+			"gitlab/environment.json",
+		},
+	})
 	defer ts.Close()
 
 	runCommandTestCases(t, []*cmdTestCase{
@@ -20,6 +26,36 @@ func TestAddEnvironmentCmd(t *testing.T) {
 			nil,
 			"environments_add_help",
 			false,
+		},
+		{
+			[]string{"envs", "add"},
+			nil,
+			"environments_add_missing_arg",
+			true,
+		},
+		{
+			[]string{"envs", "add", "my env"},
+			nil,
+			"environments_add_missing_arg",
+			true,
+		},
+		{
+			[]string{"envs", "add", "my env", "http://fake.io"},
+			map[string]string{
+				"GITLAB_HOST":   ts.URL,
+				"CI_PROJECT_ID": "1",
+			},
+			"environments_add",
+			true,
+		},
+		{
+			[]string{"envs", "add", "my env", "http://fake.io", "--verbose"},
+			map[string]string{
+				"GITLAB_HOST":   ts.URL,
+				"CI_PROJECT_ID": "1",
+			},
+			"environments_add_verbose",
+			true,
 		},
 	})
 }

@@ -1,5 +1,4 @@
-Add a new project environment
-
+Error: requires a NAME and an URL
 Usage:
   gitlab-ci-helper environments add NAME URL [flags]
 
@@ -22,3 +21,4 @@ Global Flags:
                             default to env var: GITLAB_TOKEN
                             or 'token' key in config file if exists
   -v, --verbose             enable verbose mode
+

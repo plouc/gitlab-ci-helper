@@ -47,5 +47,7 @@ use:
     - ./build/linux-amd64-gitlab-ci-helper dump-meta --verbose
     - cat ci.json && echo ""
     # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
-    - ./build/linux-amd64-gitlab-ci-helper environments list
+    - ./build/linux-amd64-gitlab-ci-helper envs add tmp/$CI_COMMIT_SHA http://fake.io
+    - ./build/linux-amd64-gitlab-ci-helper envs list
+
 
