@@ -103,6 +103,7 @@ format: ##@misc format the code and generate commands.md file
 build: ##@build build binaries
 	@echo "${YELLOW}Buiding CLI build binaries${RESET}"
 	GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.RefLog=$(SHA1) -s -w" -o build/darwin-amd64-gitlab-ci-helper cli/main.go
+	GOOS=darwin GOARCH=386   go build -ldflags "-X main.RefLog=$(SHA1) -s -w" -o build/darwin-386-gitlab-ci-helper   cli/main.go
 	GOOS=linux  GOARCH=amd64 go build -ldflags "-X main.RefLog=$(SHA1) -s -w" -o build/linux-amd64-gitlab-ci-helper  cli/main.go
 	GOOS=linux  GOARCH=386   go build -ldflags "-X main.RefLog=$(SHA1) -s -w" -o build/linux-386-gitlab-ci-helper    cli/main.go
 	GOOS=linux  GOARCH=arm   go build -ldflags "-X main.RefLog=$(SHA1) -s -w" -o build/linux-arm-gitlab-ci-helper    cli/main.go
