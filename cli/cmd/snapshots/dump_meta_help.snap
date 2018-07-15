@@ -1,10 +1,12 @@
-Dump meta information about ci into a ci.json file
+Dump meta information about CI in a file
 
 Usage:
   gitlab-ci-helper dump-meta [flags]
 
 Flags:
-  -h, --help   help for dump-meta
+  -f, --file string   The meta file
+                      can also be defined with env var: META_FILE (default "ci.json")
+  -h, --help          help for dump-meta
 
 Global Flags:
       --api-path string   gitlab api path
@@ -19,3 +21,4 @@ Global Flags:
       --token string      gitlab token
                           default to env var: GITLAB_TOKEN
                           or 'token' key in config file if exists
+  -v, --verbose           enable verbose mode

@@ -43,4 +43,6 @@ use:
     - ./build/linux-amd64-gitlab-ci-helper --help
     - ./build/linux-amd64-gitlab-ci-helper version
     - ./build/linux-amd64-gitlab-ci-helper dump-rev
-    - cat REVISION
+    - cat REVISION && echo ""
+    - ./build/linux-amd64-gitlab-ci-helper dump-meta --verbose
+    - cat ci.json && echo ""

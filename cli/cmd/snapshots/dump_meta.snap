@@ -1,0 +1,21 @@
+creating meta file ci.json
+{
+    "job": {
+        "id": "CI_JOB_ID",
+        "name": "CI_JOB_NAME",
+        "ref": "CI_COMMIT_SHA",
+        "ref_name": "CI_COMMIT_REF_NAME",
+        "tag": "CI_COMMIT_TAG",
+        "stage": "CI_JOB_STAGE"
+    },
+    "project": {
+        "id": "CI_PROJECT_ID",
+        "dir": "CI_PROJECT_DIR"
+    },
+    "server": {
+        "name": "CI_SERVER_NAME",
+        "revision": "CI_SERVER_REVISION",
+        "version": "CI_SERVER_VERSION"
+    }
+}
+✔ successfully wrote meta to: ci.json

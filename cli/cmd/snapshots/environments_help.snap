@@ -29,5 +29,6 @@ Global Flags:
       --token string      gitlab token
                           default to env var: GITLAB_TOKEN
                           or 'token' key in config file if exists
+  -v, --verbose           enable verbose mode
 
 Use "gitlab-ci-helper environments [command] --help" for more information about a command.

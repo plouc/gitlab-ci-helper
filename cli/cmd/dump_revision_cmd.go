@@ -3,6 +3,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"os"
@@ -25,10 +26,10 @@ var dumpRevisionCmd = &cobra.Command{
 	Aliases: []string{"dump-rev"},
 	Short:   "Dump a REVISION file with the current sha1",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println("creating revision file")
-
 		file := viper.GetString("revision_file")
 		ref := viper.GetString("revision_ref")
+
+		color.Yellow("creating revision file %s\n", file)
 
 		fp, err := os.Create(file)
 		defer fp.Close()
@@ -41,7 +42,7 @@ var dumpRevisionCmd = &cobra.Command{
 			return errors.New(fmt.Sprintf("unable to write to revision file %s\n%v", file, err))
 		}
 
-		fmt.Printf("ref: %s written to file: %s\n", ref, file)
+		color.Green("✔ successfully wrote ref: %s to file: %s\n", ref, file)
 
 		return nil
 	},

@@ -25,6 +25,9 @@ func init() {
 	RootCmd.PersistentFlags().Bool("no-color", false, "disable color output")
 	viper.BindPFlag("no-color", RootCmd.PersistentFlags().Lookup("no-color"))
 
+	RootCmd.PersistentFlags().BoolP("verbose", "v", false, "enable verbose mode")
+	viper.BindPFlag("verbose", RootCmd.PersistentFlags().Lookup("verbose"))
+
 	// GitLab specific options
 	RootCmd.PersistentFlags().String("host", "", "gitlab host\ndefault to env var: GITLAB_HOST\nor 'host' key in config file if exists")
 	viper.BindPFlag("host", RootCmd.PersistentFlags().Lookup("host"))

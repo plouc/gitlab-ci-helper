@@ -27,6 +27,7 @@ package
 build
 cli/gitlab-ci-helper
 REVISION
+ci.json
 
 # IDE
 .idea
