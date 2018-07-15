@@ -34,7 +34,7 @@ func init() {
 	viper.BindPFlag("token", RootCmd.PersistentFlags().Lookup("token"))
 	viper.BindEnv("token", "GITLAB_TOKEN")
 
-	RootCmd.PersistentFlags().String("api-path", "", "gitlab api path\ndefault to env var: GITLAB_API_PATH\nor'api_path' key in config file if exists,\notherwise: '/api/v4'")
+	RootCmd.PersistentFlags().String("api-path", "", "gitlab api path\ndefault to env var: GITLAB_API_PATH\nor 'api_path' key in config file if exists,\notherwise: '/api/v4'")
 	viper.BindPFlag("api_path", RootCmd.PersistentFlags().Lookup("api-path"))
 	viper.BindEnv("api_path", "GITLAB_API_PATH")
 	viper.SetDefault("api_path", "/api/v4")

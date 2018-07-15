@@ -3,6 +3,7 @@ image: golang:1.10.3
 stages:
   - test
   - build
+  - use
 
 test:
   stage: test
@@ -27,9 +28,17 @@ build:
     - make install --no-print-directory
   script:
     - make build --no-print-directory
-    - ./build/linux-amd64-gitlab-ci-helper --help
   artifacts:
     when:      always
     expire_in: 1 day
     paths:
       - build
+
+use:
+  stage: use
+  before_script: []
+  dependencies:
+    - build
+  script:
+    - ./build/linux-amd64-gitlab-ci-helper --help
+    - ./build/linux-amd64-gitlab-ci-helper version

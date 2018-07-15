@@ -9,7 +9,7 @@ Flags:
 Global Flags:
       --api-path string     gitlab api path
                             default to env var: GITLAB_API_PATH
-                            or'api_path' key in config file if exists,
+                            or 'api_path' key in config file if exists,
                             otherwise: '/api/v4'
   -c, --config string       config file (default is .ci.yaml)
       --host string         gitlab host
