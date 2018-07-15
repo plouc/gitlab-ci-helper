@@ -5,5 +5,7 @@ stages:
 
 install:
   stage: init
+  before_script:
+    - make install --no-print-directory
   script:
     - echo OK
