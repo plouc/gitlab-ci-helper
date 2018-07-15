@@ -2,6 +2,8 @@ language: go
 
 go: [1.9]
 
+go_import_path: github.com/rande/gitlab-ci-helper
+
 sudo: required
 
 services:
@@ -12,10 +14,10 @@ before_install:
 
 script:
   - go get github.com/mattn/goveralls
-  - make install
-  - make coverage-backend
-  - goveralls -coverprofile=build/gitlabcihelper.coverage -service=travis-ci
-  - make build
+  - make install --no-print-directory
+  #- make coverage-backend
+  #- goveralls -coverprofile=build/gitlabcihelper.coverage -service=travis-ci
+  - make build --no-print-directory
 
 deploy:
     provider:     releases
