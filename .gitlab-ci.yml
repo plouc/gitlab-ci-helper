@@ -27,6 +27,7 @@ build:
     - make install --no-print-directory
   script:
     - make build --no-print-directory
+    - ./build/linux-amd64-gitlab-ci-helper --help
   artifacts:
     when:      always
     expire_in: 1 day
