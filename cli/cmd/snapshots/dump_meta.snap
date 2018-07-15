@@ -6,7 +6,8 @@ creating meta file ci.json
         "ref": "CI_COMMIT_SHA",
         "ref_name": "CI_COMMIT_REF_NAME",
         "tag": "CI_COMMIT_TAG",
-        "stage": "CI_JOB_STAGE"
+        "stage": "CI_JOB_STAGE",
+        "url": "CI_JOB_URL"
     },
     "project": {
         "id": "CI_PROJECT_ID",

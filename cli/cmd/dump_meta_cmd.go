@@ -20,6 +20,7 @@ type JobMeta struct {
 	RefName string `json:"ref_name"`
 	Tag     string `json:"tag"`
 	Stage   string `json:"stage"`
+	Url     string `json:"url"`
 }
 
 type ProjectMeta struct {
@@ -63,6 +64,7 @@ var dumpMetaCmd = &cobra.Command{
 				RefName: os.Getenv("CI_COMMIT_REF_NAME"),
 				Tag:     os.Getenv("CI_COMMIT_TAG"),
 				Stage:   os.Getenv("CI_JOB_STAGE"),
+				Url:     os.Getenv("CI_JOB_URL"),
 			},
 			Project: &ProjectMeta{
 				Id:  os.Getenv("CI_PROJECT_ID"),

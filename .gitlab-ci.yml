@@ -46,3 +46,6 @@ use:
     - cat REVISION && echo ""
     - ./build/linux-amd64-gitlab-ci-helper dump-meta --verbose
     - cat ci.json && echo ""
+    # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
+    - ./build/linux-amd64-gitlab-ci-helper environments list
+

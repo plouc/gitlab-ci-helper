@@ -21,6 +21,7 @@ func TestDumpMetaCmd(t *testing.T) {
 				"CI_COMMIT_TAG":      "CI_COMMIT_TAG",
 				"CI_JOB_STAGE":       "CI_JOB_STAGE",
 				"CI_JOB_NAME":        "CI_JOB_NAME",
+				"CI_JOB_URL":         "CI_JOB_URL",
 				"CI_PROJECT_ID":      "CI_PROJECT_ID",
 				"CI_PROJECT_DIR":     "CI_PROJECT_DIR",
 				"CI_SERVER_NAME":     "CI_SERVER_NAME",
