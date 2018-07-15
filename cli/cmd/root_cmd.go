@@ -72,10 +72,8 @@ func initConfig() {
 		viper.SetConfigName(".ci")
 	}
 
-	err := viper.ReadInConfig()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
+	// error is ignored as config can also be defined via flags/en vars
+	viper.ReadInConfig()
 }
 
 var RootCmd = &cobra.Command{

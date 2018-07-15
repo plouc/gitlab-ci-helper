@@ -1,4 +1,3 @@
-Config File ".ci" Not Found in "[/Users/raphael.benitte/go/src/github.com/rande/gitlab-ci-helper/cli]"
 list-environments
  >    1 - dev              - http://dev-api.fake.io
  >    2 - staging          - http://staging-api.fake.io

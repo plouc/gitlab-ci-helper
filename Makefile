@@ -62,11 +62,16 @@ update: ##@setup update dependencies
 
 test: ##@test run tests and cs tools
 	@echo "${YELLOW}Running tests${RESET}"
-	go test -v ./cli/...
+	go test -v ./cli/... -args ${test_args}
 	go vet ./cli/...
 	gofmt -l -s -e ./cli
 	@exit `gofmt -l -s -e ./cli | wc -l`
 	@echo "${GREEN}✔ tests successfully passed${RESET}\n"
+
+update_snapshots: ##@test update snapshots
+	@echo "${YELLOW}Updating snapshots${RESET}"
+	go test -v ./cli/... -args -u all
+	@echo "${GREEN}✔ snapshots were successfully updated${RESET}\n"
 
 coverage_backend: ##@test run coverage tests
 	mkdir -p build/coverage

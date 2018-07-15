@@ -1,0 +1,32 @@
+hipchat commands
+
+Usage:
+  gitlab-ci-helper hipchat [command]
+
+Available Commands:
+  status      Sends job status to hipchat
+
+Flags:
+  -h, --help                   help for hipchat
+      --hipchat-host string    hipchat host
+                               default to environment variable: HIPCHAT_HOST
+                               or 'x.hipchat.host' path in config file if exists
+      --hipchat-token string   hipchat token
+                               default to environment variable: HIPCHAT_TOKEN
+                               or 'x.hipchat.token' path in config file if exists
+
+Global Flags:
+      --api-path string   gitlab api path
+                          default to env var: GITLAB_API_PATH
+                          or'api_path' key in config file if exists,
+                          otherwise: '/api/v4'
+  -c, --config string     config file (default is .ci.yaml)
+      --host string       gitlab host
+                          default to env var: GITLAB_HOST
+                          or 'host' key in config file if exists
+      --no-color          disable color output
+      --token string      gitlab token
+                          default to env var: GITLAB_TOKEN
+                          or 'token' key in config file if exists
+
+Use "gitlab-ci-helper hipchat [command] --help" for more information about a command.

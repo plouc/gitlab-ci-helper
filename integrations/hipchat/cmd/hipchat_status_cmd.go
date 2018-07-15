@@ -10,7 +10,7 @@ func init() {
 }
 
 var hipChatStatusCmd = &cobra.Command{
-	Use:   "status",
+	Use:   "status ROOM MESSAGE",
 	Short: "Sends job status to hipchat",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("hipchat-status")
