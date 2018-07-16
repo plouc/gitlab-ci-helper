@@ -26,6 +26,9 @@ var removeEnvironmentsCmd = &cobra.Command{
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		projectId := viper.GetString("project_id")
+		if projectId == "" {
+			return errors.New(color.RedString("✘ unable to determine project id"))
+		}
 
 		envId, err := strconv.Atoi(args[0])
 		if err != nil {

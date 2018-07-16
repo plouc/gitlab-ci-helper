@@ -45,6 +45,15 @@ func TestAddEnvironmentCmd(t *testing.T) {
 			true,
 		},
 		{
+			[]string{"envs", "add", "no project id", "http://fake.io"},
+			map[string]string{
+				"CI_PROJECT_ID": "",
+			},
+			nil,
+			"environments_add_no_project_id",
+			true,
+		},
+		{
 			[]string{"envs", "add", "my env", "http://fake.io"},
 			map[string]string{
 				"GITLAB_HOST":   ts.URL,

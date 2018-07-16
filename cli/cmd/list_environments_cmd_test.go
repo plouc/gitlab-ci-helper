@@ -35,6 +35,15 @@ func TestEnvironmentsListCmd(t *testing.T) {
 			false,
 		},
 		{
+			[]string{"environments", "ls"},
+			map[string]string{
+				"CI_PROJECT_ID": "",
+			},
+			nil,
+			"environments_list_no_project_id",
+			true,
+		},
+		{
 			[]string{"envs", "ls", "-p", "1"},
 			map[string]string{
 				"GITLAB_HOST": ts.URL,

@@ -26,6 +26,10 @@ var addEnvironmentsCmd = &cobra.Command{
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		projectId := viper.GetString("project_id")
+		if projectId == "" {
+			return errors.New(color.RedString("✘ unable to determine project id"))
+		}
+
 		name := args[0]
 		url := args[1]
 

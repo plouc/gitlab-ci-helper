@@ -37,6 +37,15 @@ func TestRemoveEnvironmentCmd(t *testing.T) {
 			true,
 		},
 		{
+			[]string{"envs", "rm", "5"},
+			map[string]string{
+				"CI_PROJECT_ID": "",
+			},
+			nil,
+			"environments_rm_no_project_id",
+			true,
+		},
+		{
 			[]string{"envs", "rm", "3"},
 			map[string]string{
 				"GITLAB_HOST":   ts.URL,

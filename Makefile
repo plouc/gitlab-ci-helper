@@ -93,15 +93,16 @@ run: ##@misc run the command
 	go run cli/main.go
 
 readme: ##@misc generate README
-	rm -f README.md
-	cat README.tpl.md >> README.md
-	go run cli/main.go doc >> README.md
+	@echo "${YELLOW}Generating ${WHITE}README.md${RESET}"
+	@rm -f README.md
+	@cat README.tpl.md >> README.md
+	@go run cli/main.go doc >> README.md
+	@echo "${GREEN}✔ successfully generated ${WHITE}README.md${RESET}\n"
 
 format: ##@misc format the code and generate commands.md file
 	@echo "${YELLOW}Formatting code${RESET}"
 	gofmt -l -w -s .
 	go fix ./...
-	#go run cli/main.go dump:readme > commands.md
 	@echo "${GREEN}✔ code was formatted as expected${RESET}\n"
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
