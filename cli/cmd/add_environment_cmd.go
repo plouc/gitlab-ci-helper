@@ -19,28 +19,29 @@ var addEnvironmentsCmd = &cobra.Command{
 	Short: "Add a new project environment",
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 2 {
-			return errors.New("requires a NAME and an URL")
+			return errors.New(color.RedString("requires a NAME and an URL"))
 		}
 
 		return nil
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
+		projectId := viper.GetString("project_id")
 		name := args[0]
 		url := args[1]
 
 		color.Yellow("creating environment %s", name)
 
-		e := gitlab.EnvironmentAddPayload{
+		env := gitlab.EnvironmentAddPayload{
 			Name:        name,
 			ExternalUrl: url,
 		}
 
-		created, _, err := client.AddProjectEnvironment(viper.GetString("project_id"), &e)
+		created, _, err := client.AddProjectEnvironment(projectId, &env)
 		if err != nil {
 			return errors.New(fmt.Sprintf("an error occurred while creating env %s:\n%v\n", name, err))
 		}
 
-		color.Green("Successfully created env %s (id: %d)", name, created.Id)
+		color.Green("✔ successfully created env %s (id: %d)", name, created.Id)
 
 		if viper.GetBool("verbose") {
 			created.RenderJson(os.Stdout)

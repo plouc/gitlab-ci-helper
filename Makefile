@@ -147,7 +147,13 @@ build_checksums: ##@build generate checksums for CLI binaries
     endif
 	@echo "${GREEN}✔ successfully generated CLI build checksums to ${WHITE}build/checksums.txt${RESET}\n"
 
-gitlab_usage:
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#
+#  GITLAB
+#
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+gitlab_usage: ##@gitlab run sample commands using binary inside a real gitlab job
 	mv ./build/linux-amd64-gitlab-ci-helper ./gitlab-ci-helper
 	./gitlab-ci-helper help
 	./gitlab-ci-helper version
@@ -158,5 +164,5 @@ gitlab_usage:
 
     # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
 	./gitlab-ci-helper envs add -v "tmp/${CI_COMMIT_SHA}" http://fake.io
-	./gitlab-ci-helper envs list
-	ID=$$(./gitlab-ci-helper envs list | grep "${CI_COMMIT_SHA}" | cut -d ' ' -f3) echo $${ID}
+	./gitlab-ci-helper envs ls
+	./gitlab-ci-helper envs rm $$(./gitlab-ci-helper envs ls | grep "${CI_COMMIT_SHA}" | cut -d ' ' -f3)

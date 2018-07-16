@@ -1,4 +1,4 @@
-list-environments
+available environments
  >    1 - dev              - http://dev-api.fake.io
  >    2 - staging          - http://staging-api.fake.io
  >    3 - prod             - http://prod-api.fake.io

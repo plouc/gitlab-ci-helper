@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/fatih/color"
 	"github.com/plouc/go-gitlab-client/gitlab"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -18,8 +19,6 @@ var listEnvironmentsCmd = &cobra.Command{
 	Aliases: []string{"ls"},
 	Short:   "List project's environments",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list-environments")
-
 		environments, _, err := client.ProjectEnvironments(viper.GetString("project_id"), &gitlab.PaginationOptions{
 			PerPage: 100,
 		})
@@ -28,6 +27,7 @@ var listEnvironmentsCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
+		color.Yellow("available environments")
 		for _, e := range environments.Items {
 			fmt.Printf(" > %4d - %-16s - %s\n", e.Id, e.Name, e.ExternalUrl)
 		}

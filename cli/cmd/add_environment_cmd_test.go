@@ -46,7 +46,7 @@ func TestAddEnvironmentCmd(t *testing.T) {
 				"CI_PROJECT_ID": "1",
 			},
 			"environments_add",
-			true,
+			false,
 		},
 		{
 			[]string{"envs", "add", "my env", "http://fake.io", "--verbose"},
@@ -55,7 +55,7 @@ func TestAddEnvironmentCmd(t *testing.T) {
 				"CI_PROJECT_ID": "1",
 			},
 			"environments_add_verbose",
-			true,
+			false,
 		},
 	})
 }
