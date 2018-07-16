@@ -12,6 +12,7 @@ func TestHipchatCmd(t *testing.T) {
 		{
 			[]string{"hipchat", "--help"},
 			nil,
+			nil,
 			"hipchat_help",
 			false,
 		},

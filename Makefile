@@ -92,6 +92,11 @@ coverage_backend: ##@test run coverage tests
 run: ##@misc run the command
 	go run cli/main.go
 
+readme: ##@misc generate README
+	rm -f README.md
+	cat README.tpl.md >> README.md
+	go run cli/main.go doc >> README.md
+
 format: ##@misc format the code and generate commands.md file
 	@echo "${YELLOW}Formatting code${RESET}"
 	gofmt -l -w -s .
@@ -153,8 +158,15 @@ build_checksums: ##@build generate checksums for CLI binaries
 #
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+# This recipe is used to run commands from the built binary
+# on a real GitLab CI runner, it also requires the followin env vars:
+# - GITLAB_HOST
+# - GITLAB_TOKEN
 gitlab_usage: ##@gitlab run sample commands using binary inside a real gitlab job
+	@echo "${YELLOW}Running sample commands${RESET}"
+
 	mv ./build/linux-amd64-gitlab-ci-helper ./gitlab-ci-helper
+
 	./gitlab-ci-helper help
 	./gitlab-ci-helper version
 	./gitlab-ci-helper dump-rev
@@ -162,7 +174,6 @@ gitlab_usage: ##@gitlab run sample commands using binary inside a real gitlab jo
 	./gitlab-ci-helper dump-meta -v
 	cat ci.json && echo ""
 
-    # GITLAB_HOST & GITLAB_TOKEN should be set in CI/CD variables
 	./gitlab-ci-helper envs add -v "tmp/${CI_COMMIT_SHA}" http://fake.io
 	./gitlab-ci-helper envs ls
 	./gitlab-ci-helper envs rm $$(./gitlab-ci-helper envs ls | grep "${CI_COMMIT_SHA}" | cut -d ' ' -f3)

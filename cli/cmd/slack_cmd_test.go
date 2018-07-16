@@ -12,6 +12,7 @@ func TestSlackCmd(t *testing.T) {
 		{
 			[]string{"slack", "--help"},
 			nil,
+			nil,
 			"slack_help",
 			false,
 		},

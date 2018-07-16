@@ -12,6 +12,7 @@ func TestAwsCmd(t *testing.T) {
 		{
 			[]string{"aws", "--help"},
 			nil,
+			nil,
 			"aws_help",
 			false,
 		},

@@ -9,6 +9,7 @@ func TestDumpMetaCmd(t *testing.T) {
 		{
 			[]string{"dump-meta", "--help"},
 			nil,
+			nil,
 			"dump_meta_help",
 			false,
 		},
@@ -28,6 +29,7 @@ func TestDumpMetaCmd(t *testing.T) {
 				"CI_SERVER_REVISION": "CI_SERVER_REVISION",
 				"CI_SERVER_VERSION":  "CI_SERVER_VERSION",
 			},
+			nil,
 			"dump_meta",
 			false,
 		},

@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/plouc/gosnap"
+	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -16,13 +17,12 @@ import (
 
 const binaryName = "gitlab-ci-helper"
 
-var binaryPath string
 var snapshotsDir string
-var mockServerUrl string
 
 type cmdTestCase struct {
 	args     []string
 	env      map[string]string
+	manual   func(t *testing.T, output string)
 	snapshot string
 	wantErr  bool
 }
@@ -49,9 +49,20 @@ func runCommandTestCase(t *testing.T, ctx *gosnap.Context, tc *cmdTestCase) {
 		}
 		c.Env = env
 
-		output, _ := c.CombinedOutput()
+		output, err := c.CombinedOutput()
+		if tc.wantErr {
+			assert.Error(t, err, "command '%s' was expected to throw an error", strings.Join(tc.args, " "))
+		} else {
+			assert.NoError(t, err, "command '%s' wasn't expected to throw an error", strings.Join(tc.args, " "))
+		}
 
-		s.AssertString(string(output))
+		if !t.Failed() && tc.manual != nil {
+			tc.manual(t, string(output))
+		}
+
+		if !t.Failed() {
+			s.AssertString(string(output))
+		}
 	})
 }
 

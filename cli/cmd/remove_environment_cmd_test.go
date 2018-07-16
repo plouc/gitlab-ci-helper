@@ -18,17 +18,20 @@ func TestRemoveEnvironmentCmd(t *testing.T) {
 		{
 			[]string{"environments", "remove", "--help"},
 			nil,
+			nil,
 			"environments_rm_help",
 			false,
 		},
 		{
 			[]string{"envs", "rm", "--help"},
 			nil,
+			nil,
 			"environments_rm_help",
 			false,
 		},
 		{
 			[]string{"envs", "rm"},
+			nil,
 			nil,
 			"environments_rm_missing_arg",
 			true,
@@ -39,6 +42,7 @@ func TestRemoveEnvironmentCmd(t *testing.T) {
 				"GITLAB_HOST":   ts.URL,
 				"CI_PROJECT_ID": "1",
 			},
+			nil,
 			"environments_rm",
 			false,
 		},

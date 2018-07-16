@@ -9,6 +9,7 @@ func TestEnvironmentsCmd(t *testing.T) {
 		{
 			[]string{"environments", "--help"},
 			nil,
+			nil,
 			"environments_help",
 			false,
 		},
@@ -17,6 +18,7 @@ func TestEnvironmentsCmd(t *testing.T) {
 			map[string]string{
 				"WHATEVER": "whatever",
 			},
+			nil,
 			"environments_help",
 			false,
 		},

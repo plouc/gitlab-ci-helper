@@ -23,11 +23,13 @@ func TestEnvironmentsListCmd(t *testing.T) {
 		{
 			[]string{"environments", "list", "--help"},
 			nil,
+			nil,
 			"environments_list_help",
 			false,
 		},
 		{
 			[]string{"envs", "ls", "--help"},
+			nil,
 			nil,
 			"environments_list_help",
 			false,
@@ -37,6 +39,7 @@ func TestEnvironmentsListCmd(t *testing.T) {
 			map[string]string{
 				"GITLAB_HOST": ts.URL,
 			},
+			nil,
 			"environments_list",
 			false,
 		},
@@ -46,6 +49,7 @@ func TestEnvironmentsListCmd(t *testing.T) {
 				"GITLAB_HOST":   ts.URL,
 				"CI_PROJECT_ID": "1",
 			},
+			nil,
 			"environments_list",
 			false,
 		},
@@ -54,6 +58,7 @@ func TestEnvironmentsListCmd(t *testing.T) {
 			map[string]string{
 				"GITLAB_HOST": ts.URL,
 			},
+			nil,
 			"environments_list_empty",
 			false,
 		},

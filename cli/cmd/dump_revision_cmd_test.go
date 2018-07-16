@@ -9,11 +9,13 @@ func TestDumpRevisionCmd(t *testing.T) {
 		{
 			[]string{"dump-revision", "--help"},
 			nil,
+			nil,
 			"dump_revision_help",
 			false,
 		},
 		{
 			[]string{"dump-rev", "--help"},
+			nil,
 			nil,
 			"dump_revision_help",
 			false,
@@ -23,6 +25,7 @@ func TestDumpRevisionCmd(t *testing.T) {
 			map[string]string{
 				"CI_COMMIT_SHA": "e0e2f21877d4dd826bc21af3bc8bf0f0b273846d",
 			},
+			nil,
 			"dump_revision",
 			false,
 		},

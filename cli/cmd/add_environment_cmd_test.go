@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -18,11 +19,13 @@ func TestAddEnvironmentCmd(t *testing.T) {
 		{
 			[]string{"environments", "add", "--help"},
 			nil,
+			nil,
 			"environments_add_help",
 			false,
 		},
 		{
 			[]string{"envs", "add", "--help"},
+			nil,
 			nil,
 			"environments_add_help",
 			false,
@@ -30,11 +33,13 @@ func TestAddEnvironmentCmd(t *testing.T) {
 		{
 			[]string{"envs", "add"},
 			nil,
+			nil,
 			"environments_add_missing_arg",
 			true,
 		},
 		{
 			[]string{"envs", "add", "my env"},
+			nil,
 			nil,
 			"environments_add_missing_arg",
 			true,
@@ -45,6 +50,9 @@ func TestAddEnvironmentCmd(t *testing.T) {
 				"GITLAB_HOST":   ts.URL,
 				"CI_PROJECT_ID": "1",
 			},
+			func(t *testing.T, output string) {
+				assert.Contains(t, output, "successfully created env my env")
+			},
 			"environments_add",
 			false,
 		},
@@ -54,6 +62,7 @@ func TestAddEnvironmentCmd(t *testing.T) {
 				"GITLAB_HOST":   ts.URL,
 				"CI_PROJECT_ID": "1",
 			},
+			nil,
 			"environments_add_verbose",
 			false,
 		},
